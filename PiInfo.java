@@ -34,4 +34,6 @@ public interface PiInfo extends Remote
     public String getEndian(String client) throws RemoteException;
     
     public PiTriInfo getUserDetails(String client) throws RemoteException;
+
+    public void runSoundTest() throws RemoteException;
 }

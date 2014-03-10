@@ -8,6 +8,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.io.*;
 
 /**
  * This is the class that implements the service served by the server for the
@@ -41,6 +42,23 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
      * user.dir
      */ 
     
+
+    @Override
+    public void runSoundTest() throws RemoteException
+    {
+      System.out.println("Running sound test...");
+      try {
+        Process p = Runtime.getRuntime().exec("speaker-test -c2 -t wav");
+        BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String line = null;
+        while ((line = in.readLine()) != null) {
+          System.out.println(line);
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+
     @Override
     public PiTriInfo getOSDetails(String client) throws RemoteException
     {

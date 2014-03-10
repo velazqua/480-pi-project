@@ -36,7 +36,6 @@ public class PiInfoClient
         {
             PiInfoClient us = PiInfoClient.getInstance();
             us.reportPiInfo(args[0]);
-            us.runSoundTest();
         }
         else
         {
@@ -71,6 +70,8 @@ public class PiInfoClient
             PiTriInfo userInfo = connection.getUserDetails(client);
             System.out.println(serverName + "'s User details are:");
             displayPiTriInfo(userInfo);
+
+            connection.runSoundTest();
         }
         catch (Exception ex)
         {
