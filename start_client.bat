@@ -1,0 +1,1 @@
+java -Djava.security.policy="./pirmi/Policy" pirmi.PiInfoClient %1

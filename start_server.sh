@@ -1,0 +1,1 @@
+java -Djava.rmi.server.hostname="Enter IP here" -Djava.security.policy="./pirmi/Policy" pirmi.PiInfoServer
