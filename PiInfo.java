@@ -35,5 +35,5 @@ public interface PiInfo extends Remote
     
     public PiTriInfo getUserDetails(String client) throws RemoteException;
 
-    public void runSoundTest() throws RemoteException;
+    public String runSoundTest() throws RemoteException;
 }

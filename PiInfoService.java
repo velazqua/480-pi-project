@@ -47,19 +47,19 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
     public String runSoundTest() throws RemoteException
     {
       System.out.println("Running sound test...");
+      String output = null;
       try {
         Process p = Runtime.getRuntime().exec("speaker-test -c2 -t wav");
         BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        String output = null;
         String line = null;
         while ((line = in.readLine()) != null) {
           System.out.println(line);
           output += line;
         }
-        return output;
       } catch (IOException e) {
         e.printStackTrace();
       }
+      return output;
     }
 
     @Override
