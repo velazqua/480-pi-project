@@ -71,7 +71,9 @@ public class PiInfoClient
             System.out.println(serverName + "'s User details are:");
             displayPiTriInfo(userInfo);
 
-            connection.runSoundTest();
+            String output = connection.runSoundTest();
+
+            System.out.println(output);
         }
         catch (Exception ex)
         {
