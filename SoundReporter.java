@@ -1,3 +1,5 @@
+package pirmi;
+
 import java.io.*;
 
 public class SoundReporter

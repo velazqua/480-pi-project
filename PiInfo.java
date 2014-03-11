@@ -30,7 +30,7 @@ public interface PiInfo extends Remote
     public String getEndian(String client) throws RemoteException;
     public PiTriInfo getUserDetails(String client) throws RemoteException;
     public String runSoundTest() throws RemoteException;
-    public JSONObject getNoise (int seconds) throws RemoteException;
+    public String getNoise (int seconds) throws RemoteException;
 
     // TO DO:
     //public JSONObject getNoiseInterval (int secPerInterval, int numIntervals) throws RemoteException;

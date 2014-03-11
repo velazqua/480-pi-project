@@ -9,7 +9,6 @@ import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.io.*;
-import org.json.simple.JSONObject;
 
 /**
  * This is the class that implements the service served by the server for the
@@ -44,7 +43,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
      */
 
     @Override
-    public JSONObject getNoise (int seconds) throws RemoteException
+    public String getNoise (int seconds) throws RemoteException
     {
       // record mp3
       try {
@@ -54,26 +53,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
         e.printStackTrace();
       }
 
-      // get stats
-      String stats = null;
-      try {
-        Process p = Runtime.getRuntime().exec("sox recording.mp3 -n stat");
-        BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        String line = null;
-        while ((line = in.readLine()) != null) {
-          stats += line;
-          stats += "\n";
-        }
-      }
-      catch (IOException e) {
-        e.printStackTrace();
-      }
-
-      // parse stats
-      Stats st = new Stats(stats);
-
-      // Make JSON object
-      JSONObject json = st.getJSONObject();
+      SoundReporter reporter = new SoundReporter("recording.mp3");
 
       // Clean up
       try {
@@ -82,7 +62,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
       catch (IOException e) {
         e.printStackTrace();
       }
-      return json;
+      return reporter.getJson();
     }
 
     @Override
