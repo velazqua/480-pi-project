@@ -54,6 +54,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
         e.printStackTrace();
       }
 
+      Thread.sleep((seconds+1)*1000);
       SoundReporter reporter = new SoundReporter("recording.mp3");
 
       // Clean up
