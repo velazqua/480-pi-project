@@ -65,6 +65,7 @@ public class SoundReporter
 		Runtime rt = Runtime.getRuntime();
 		Process pr = rt.exec("sox "+soundFilename+" -n stat");
 		content = getContents(pr.getErrorStream()); // for standard I/O: content = getContents(pr.getInputStream());
+    System.out.println(content);
 	}
 	catch (Exception exc)
 	{
