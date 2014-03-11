@@ -46,6 +46,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
     public String getNoise (int seconds) throws RemoteException
     {
       // record mp3
+      System.out.println("Recording audio now");
       try {
         Process p = Runtime.getRuntime().exec("sox -t alsa plughw:1 recording.mp3 trim 0 " + seconds);
       }
@@ -57,7 +58,8 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
 
       // Clean up
       try {
-        Process p = Runtime.getRuntime().exec("rm -f recording.mp3");
+        //Process p = Runtime.getRuntime().exec("rm -f recording.mp3");
+        Process p = Runtime.getRuntime().exec("echo hello");
       }
       catch (IOException e) {
         e.printStackTrace();

@@ -61,6 +61,7 @@ public class SoundReporter
 	String content = "";
 	try
 	{
+    System.out.println("runSox function");
 		Runtime rt = Runtime.getRuntime();
 		Process pr = rt.exec("sox "+soundFilename+" -n stat");
 		content = getContents(pr.getErrorStream()); // for standard I/O: content = getContents(pr.getInputStream());
@@ -109,7 +110,7 @@ public class SoundReporter
 		throw new IllegalArgumentException("Must be wav or mp3: "+filename);
 	
 	this.soundFilename=filename;
-	runSox();
+	this.runSox();
  }
 
 /**
@@ -135,22 +136,4 @@ Returns in JSON format
 	return "{\"minAmplitude\": "+minAmplitude+", \"maxAmplitude\": "+maxAmplitude+", \"meanAmplitude\": "+meanAmplitude
 	+",\"rmsAmplitude\": "+rmsAmplitude+", \"db\": "+getDecibels()+", \"midlineAmplitude\": "+midlineAmplitude+"}";
  }
- 
- /**
- main is for testing that the stats are extracted and printed correctly.
- */
- public static void main(String a[])
- {
-	if (a.length<1)
-	{
-		System.out.println("wav or mp3 file must be specified.");
-	}
-	else
-	{
-		SoundReporter reporter = new SoundReporter(a[0]);
-		System.out.println(""+reporter.getJson());
-	}
-	
- } // end main
- 
 } // end class SoundReporter
