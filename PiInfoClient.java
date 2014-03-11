@@ -56,8 +56,8 @@ public class PiInfoClient
         {
             connection = connectToServer(host);
 
-            String output = connection.runSoundTest();
-
+            System.out.println("Getting json file");
+            String output = connection.getNoise(5);
             System.out.println(output);
         }
         catch (Exception ex)
