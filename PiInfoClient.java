@@ -56,21 +56,6 @@ public class PiInfoClient
         {
             connection = connectToServer(host);
 
-            String serverName = connection.getHostName(client);
-            System.out.println(serverName + "'s Java version is: " + connection.getJavaVersion(client));
-
-            PiTriInfo osInfo = connection.getOSDetails(client);
-            System.out.println(serverName + "'s OS details are:");
-            displayPiTriInfo(osInfo);
-
-            System.out.println(serverName + "'s data model is: " + connection.getDataModel(client));
-
-            System.out.println(serverName + "'s endian is: " + connection.getEndian(client));
-
-            PiTriInfo userInfo = connection.getUserDetails(client);
-            System.out.println(serverName + "'s User details are:");
-            displayPiTriInfo(userInfo);
-
             String output = connection.runSoundTest();
 
             System.out.println(output);
@@ -78,20 +63,6 @@ public class PiInfoClient
         catch (Exception ex)
         {
             ex.printStackTrace(System.err);
-        }
-    }
-
-    private void displayPiTriInfo(PiTriInfo info)
-    {
-        PiPairInfo[] pair = new PiPairInfo[3];
-
-        pair[0] = info.getOne();
-        pair[1] = info.getTwo();
-        pair[2] = info.getThree();
-
-        for (byte i = 0; i <= 2; i++)
-        {
-            System.out.println("    " + pair[i].getKey() + " is: " + pair[i].getValue());
         }
     }
 

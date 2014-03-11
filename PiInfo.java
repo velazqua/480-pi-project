@@ -23,12 +23,6 @@ public interface PiInfo extends Remote
     public static final int RMIRegistryPort = 2024;
     public static final int ServicePort = 2025;
 
-    public String getHostName(String client) throws RemoteException;
-    public String getJavaVersion(String client) throws RemoteException;
-    public PiTriInfo getOSDetails(String client) throws RemoteException;
-    public String getDataModel(String client) throws RemoteException;
-    public String getEndian(String client) throws RemoteException;
-    public PiTriInfo getUserDetails(String client) throws RemoteException;
     public String runSoundTest() throws RemoteException;
     public String getNoise (int seconds) throws RemoteException;
 
