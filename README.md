@@ -5,9 +5,10 @@ using a microphone. We return a json with information such as amplitude, decibel
 etc.
 
 Public API function calls:
-  public String getNoise (int seconds)
-  - Analyzes audio (in real time) for that many seconds.
 
-  public String getNoiseInterval (int seconds, int numIntervals)
-  - Analyzes audio (in real time) for that many seconds, for that
-  many intervals
+  - public String getNoise (int seconds)
+    - Analyzes audio (in real time) for that many seconds.
+
+  - public String getNoiseInterval (int seconds, int numIntervals)
+    - Analyzes audio (in real time) for that many seconds, for that
+  many intervals.
