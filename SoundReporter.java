@@ -10,6 +10,13 @@ public class SoundReporter
  private double midlineAmplitude; 
  private double meanAmplitude;
  private double rmsAmplitude;
+ private double roughHz;
+ private double mNorm;
+ private double maxDelta;
+ private double minDelta;
+ private double meanDelta;
+ private double rDelta;
+ private double volumeAdj;
  
  private static String getContents(InputStream in)
  {
@@ -61,11 +68,9 @@ public class SoundReporter
 	String content = "";
 	try
 	{
-    System.out.println("runSox function");
 		Runtime rt = Runtime.getRuntime();
 		Process pr = rt.exec("sox "+soundFilename+" -n stat");
 		content = getContents(pr.getErrorStream()); // for standard I/O: content = getContents(pr.getInputStream());
-    System.out.println(content);
 	}
 	catch (Exception exc)
 	{
@@ -76,7 +81,8 @@ public class SoundReporter
 	// loop through lines of content.
 	for (String line: content.split("\n"))
 	{
-		if (line.contains("amplitude"))
+		if (line.contains("amplitude") || line.contains("frequency") || line.contains("norm") 
+				|| line.contains("delta") || line.contains("adjustment"))
 		{
 			if (line.contains("Maximum"))
 			{
@@ -96,7 +102,35 @@ public class SoundReporter
 			}
 			if (line.contains("Midline"))
 			{
-				midlineAmplitude=getDoubleFrom(line);
+				midlineAmplitude = getDoubleFrom(line);
+			}
+			if (line.contains("Rough"))
+			{
+				roughHz = getDoubleFrom(line);
+			}
+			if (line.contains("Mean"))
+			{
+				mNorm = getDoubleFrom(line);
+			}
+			if (line.contains("Maximum"))
+			{
+				maxDelta = getDoubleFrom(line);
+			}
+			if (line.contains("Minimum"))
+			{
+				minDelta = getDoubleFrom(line);
+			}
+			if (line.contains("Mean"))
+			{
+				meanDelta = getDoubleFrom(line);
+			}
+			if (line.contains("RMS"))
+			{
+				rDelta = getDoubleFrom(line);
+			}
+			if (line.contains("Volume"))
+			{
+				volumeAdj = getDoubleFrom(line);
 			}
 		}
 	}
@@ -108,10 +142,10 @@ public class SoundReporter
  public SoundReporter(String filename)
  {
 	if (!filename.endsWith(".wav")&&!filename.endsWith(".mp3"))
-		throw new IllegalArgumentException("Must be wav or mp3: "+filename);
+		throw new IllegalArgumentException("Audio file Must be wav or mp3: "+filename);
 	
 	this.soundFilename=filename;
-	this.runSox();
+	runSox();
  }
 
 /**
@@ -134,7 +168,35 @@ Returns in JSON format
 */ 
  public String getJson()
  {
-	return "{\"minAmplitude\": "+minAmplitude+", \"maxAmplitude\": "+maxAmplitude+", \"meanAmplitude\": "+meanAmplitude
-	+",\"rmsAmplitude\": "+rmsAmplitude+", \"db\": "+getDecibels()+", \"midlineAmplitude\": "+midlineAmplitude+"}";
+	return "{\"minAmplitude\": "+minAmplitude
+			+", \"maxAmplitude\": "+maxAmplitude
+			+", \"meanAmplitude\": "+meanAmplitude
+			+",\"rmsAmplitude\": "+rmsAmplitude
+			+", \"db\": "+getDecibels()
+			+", \"rFrequency\": "+roughHz
+			+", \"meanNorm\": "+mNorm
+			+", \"maxDelta\": "+maxDelta
+			+", \"minDelta\": "+minDelta
+			+", \"meanDelta\": "+meanDelta
+			+", \"rmsDelta\": "+rDelta
+			+", \"midlineAmplitude\": "+midlineAmplitude+"}";
  }
+ 
+ /**
+ main is for testing that the stats are extracted and printed correctly.
+ */
+ public static void main(String a[])
+ {
+	if (a.length<1)
+	{
+		System.out.println("wav or mp3 file must be specified.");
+	}
+	else
+	{
+		SoundReporter reporter = new SoundReporter(a[0]);
+		System.out.println(""+reporter.getJson());
+	}
+	
+ } // end main
+ 
 } // end class SoundReporter
