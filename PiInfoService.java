@@ -41,6 +41,19 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
      * user.home
      * user.dir
      */
+    @Override
+    public String getNoiseInterval (int seconds, int numIntervals) throws RemoteException
+    {
+      String jsonString = "{";
+      for (int i = 1; i <= numIntervals; i++) {
+        String result = this.getNoise(seconds);
+        jsonString += " { \"interval\" : " + i + ", \"object\" : ";
+        jsonString += result;
+        jsonString += " }";
+      }
+      jsonString += "}";
+      return jsonString;
+    }
 
     @Override
     public String getNoise (int seconds) throws RemoteException

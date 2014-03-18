@@ -25,9 +25,7 @@ public interface PiInfo extends Remote
 
     public String runSoundTest() throws RemoteException;
     public String getNoise (int seconds) throws RemoteException;
-
-    // TO DO:
-    //public JSONObject getNoiseInterval (int secPerInterval, int numIntervals) throws RemoteException;
+    public String getNoiseInterval (int seconds, int numIntervals) throws RemoteException;
 
     // TO DO:
     //public JSONObject getNoiseAtTime (int seconds, Date date) throws RemoteException;
