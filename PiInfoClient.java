@@ -25,45 +25,11 @@ import java.rmi.UnmarshalException;
  */
 public class PiInfoClient
 {
-
-    private PiInfo connection = null;
     private static PiInfoClient instance = null;
     private String client;
 
-    public static void main(String[] args)
-    {
-        if (args.length == 1)
-        {
-            PiInfoClient us = PiInfoClient.getInstance();
-            us.reportPiInfo(args[0]);
-        }
-        else
-        {
-            System.err.println("Usage: java -Djava.security.policy=\"./pirmi/Policy\" pirmi.PiInfoClient server name (or server IP)");
-        }
-    }
-
     private PiInfoClient()
     {
-    }
-
-    /**
-     *
-     */
-    private void reportPiInfo(String host)
-    {
-        try
-        {
-            connection = connectToServer(host);
-
-            System.out.println("Getting json file");
-            String output = connection.getNoise(5);
-            System.out.println(output);
-        }
-        catch (Exception ex)
-        {
-            ex.printStackTrace(System.err);
-        }
     }
 
     /**
@@ -95,8 +61,9 @@ public class PiInfoClient
      * @throws java.rmi.ConnectException
      * @throws java.security.AccessControlException
      */
-    private PiInfo connectToServer(String connectionHost) throws UnknownHostException, NotBoundException, MalformedURLException, RemoteException, UnmarshalException, ClassNotFoundException, java.rmi.ConnectException, java.security.AccessControlException
+    public PiInfo connectToServer(String connectionHost) throws UnknownHostException, NotBoundException, MalformedURLException, RemoteException, UnmarshalException, ClassNotFoundException, java.rmi.ConnectException, java.security.AccessControlException
     {
+        PiInfo connection = null;
         try
         {
             // Create and install a security manager.
