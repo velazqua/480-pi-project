@@ -12,3 +12,18 @@ Public API function calls:
   - public String getNoiseInterval (int seconds, int numIntervals)
     - Analyzes audio (in real time) for that many seconds, for that
   many intervals.
+
+How to Run it
+===============
+Run the following on your command line:
+  - git clone https://github.com/velazqua/480-pi-project.git
+
+Change name of 480-pi-project directory to pirmi:
+  - mv 480-pi-project pirmi
+
+Compile all java files:
+  - javac pirmi/*.java
+
+Run client:
+  - ./start_client.sh 137.207.74.151 (Unix)
+  - ./start_client.bat 137.207.74.151 (Windows)
