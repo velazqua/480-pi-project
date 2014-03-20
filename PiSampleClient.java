@@ -13,23 +13,17 @@ import java.rmi.RemoteException;
 import java.rmi.UnmarshalException;
 import org.json.JSONObject;
 
-public class SingleClient
+public class PiSampleClient
 {
     public static void main(String[] args) throws Exception
     {
         if (args.length == 1)
         {
-            PiInfo audioClient;
+            PiInfo audioClient = (PiInfo) Naming.lookup("rmi://137.207.74.151:2024/PiInfoServer");
 
-            String serverIpAudio1 = args[0];
-
-            // Connect to the servers
-            audioClient = (PiInfo) Naming.lookup("rmi://" + serverIpAudio1 + ":2024/AudioServer");
-
-            // Start recording on audio server 1
+            // Record statistic on audio for 5 seconds
             String outputAudio1 = audioClient.getNoise(5);
-
-            // Get amplitude from both audio sources
+            System.out.println(outputAudio1);
 
             JSONObject json1 = new JSONObject(outputAudio1);
 
