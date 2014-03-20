@@ -64,6 +64,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
         Process p = Runtime.getRuntime().exec("sox -t alsa plughw:1 recording.mp3 trim 0 " + seconds);
       }
       catch (IOException e) {
+        System.out.println("Problem recording audio");
         e.printStackTrace();
       }
 
@@ -71,6 +72,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
         Thread.sleep((seconds+1)*1000);
       }
       catch (InterruptedException e) {
+        System.out.println("Problem sleeping");
         e.printStackTrace();
       }
 
@@ -82,6 +84,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
         Process p = Runtime.getRuntime().exec("echo hello");
       }
       catch (IOException e) {
+        System.out.println("Problem deleting");
         e.printStackTrace();
       }
       return reporter.getJson();
