@@ -22,8 +22,8 @@ Change name of 480-pi-project directory to pirmi:
   - mv 480-pi-project pirmi
 
 Compile all java files:
-  - javac pirmi/*.java
+  - javac -cp "./pirmi/java-json.jar" pirmi/*.java
 
-Run client:
+Run sample client program:
   - ./start_client.sh 137.207.74.151 (Unix)
   - ./start_client.bat 137.207.74.151 (Windows)
