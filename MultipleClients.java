@@ -25,7 +25,7 @@ public class MultipleClients
 
             // Connect to the servers
             robot = (RaspiRobotInterface) Naming.lookup("rmi://" + robotIP + "/RaspiRobot");
-            rmiServer = (AudioInterface) Naming.lookup("rmi//"+serverIPAudio2+"/Hello");
+            //rmiServer = (AudioInterface) Naming.lookup("rmi//"+serverIPAudio2+"/Hello");
             audioClient = (PiInfo) Naming.lookup("rmi://"+serverIPAudio1+"/PiInfoServer");
 
             for (int k = 0; k < 10; k++) {
@@ -33,6 +33,7 @@ public class MultipleClients
               String outputAudio1 = audioClient.getNoise(3);
 
               // Start recording on audio server 2
+              /*
               rmiServer.StartRecord();
               try {
                 Thread.sleep(3*1000);
@@ -42,16 +43,18 @@ public class MultipleClients
               }
 
               rmiServer.StopRecord();
-
+              */
               // Get amplitude from both audio sources
               JSONObject json1 = new JSONObject(outputAudio1);
 
+              /*
               Object jsonAudioObj = rmiServer.getMetadata();
               JSONObject json2 = new JSONObject(jsonAudioObj.toString());
+              */
 
               Double amp1 = new Double(json1.get("meanAmplitude").toString());
-              Double amp2 = new Double(json2.get("meanAmplitude").toString());
-
+              //Double amp2 = new Double(json2.get("meanAmplitude").toString());
+              Double amp2 = new Double(0.1);
               if (amp1 > amp2) {
                 robot.moveForward();
               }
