@@ -1,7 +1,3 @@
-/*
- * Pi RMI.
- * © G J Barnard 2013 - Attribution-NonCommercial-ShareAlike 3.0 Unported - http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB.
- */
 package pirmi;
 
 import java.rmi.RemoteException;
@@ -24,7 +20,6 @@ import java.rmi.registry.Registry;
  * You could have the server implement the service too, but I have decided to
  * separate it out for clarity.
  * 
- * @author G J Barnard
  */
 public class PiInfoServer extends Thread
 {

@@ -1,7 +1,3 @@
-/*
- * Pi RMI.
- * © G J Barnard 2013 - Attribution-NonCommercial-ShareAlike 3.0 Unported - http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB.
- */
 package pirmi;
 
 import java.net.InetAddress;

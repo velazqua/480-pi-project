@@ -1,7 +1,3 @@
-/*
- * Pi RMI.
- * © G J Barnard 2013 - Attribution-NonCommercial-ShareAlike 3.0 Unported - http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB.
- */
 package pirmi;
 
 import java.net.InetAddress;
@@ -19,7 +15,6 @@ import java.io.*;
  * the server - see:
  * http://docs.oracle.com/javase/7/docs/technotes/tools/windows/rmic.html.
  * 
- * @author G J Barnard
  */
 public class PiInfoService extends UnicastRemoteObject implements PiInfo
 {
@@ -29,18 +24,6 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
         super(port);
     }
 
-    /*
-     * Methods to get the following:
-     * java.version
-     * os.arch
-     * os.name
-     * os.version
-     * sun.arch.data.model
-     * sun.cpu.endian
-     * user.name
-     * user.home
-     * user.dir
-     */
     @Override
     public String getNoiseInterval (int seconds, int numIntervals) throws RemoteException
     {

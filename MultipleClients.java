@@ -1,7 +1,3 @@
-/*
- * Pi RMI.
- * © G J Barnard 2013 - Attribution-NonCommercial-ShareAlike 3.0 Unported - http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB.
- */
 package pirmi;
 
 import java.net.InetAddress;
@@ -15,16 +11,16 @@ import org.json.JSONObject;
 
 public class MultipleClients
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
-        if (args.length == 1)
+        if (args.length == 3)
         {
             PiInfo audioClient;
             AudioInterface rmiServer;
             RaspiRobotInterface robot;
 
-            String serverIpAudio1 = args[0];
-            String serverIpAudio2 = args[1];
+            String serverIPAudio1 = args[0];
+            String serverIPAudio2 = args[1];
             String robotIP = args[2];
 
             // Connect to the servers
