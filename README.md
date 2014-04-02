@@ -18,11 +18,8 @@ How to Run it
 Run the following on your command line:
   - git clone https://github.com/velazqua/480-pi-project.git
 
-Change name of 480-pi-project directory to pirmi:
-  - mv 480-pi-project pirmi
-
-Compile all java files:
-  - javac -cp "./pirmi/java-json.jar" pirmi/*.java
+Compile all java files: (works in Unix)
+  - javac -cp ".:./java-json.jar" *.java
 
 Run sample client program:
   - ./start_client.sh 137.207.74.151 (Unix)
