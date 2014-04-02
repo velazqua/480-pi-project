@@ -13,6 +13,11 @@ Public API function calls:
     - Analyzes audio (in real time) for that many seconds, for that
   many intervals.
 
+Both functions return a valid JSON string with the following attributes:
+minAmplitude, maxAmplitude, meanAmplitude, rmsAmplitude, db, rFrequency, meanNorm, maxDelta, minDelta, meanDelta, rmsDelta, and midlineAmplitude.
+
+Interpretation of attributes is left to the client.
+
 How to Run it
 ===============
 Run the following on your command line:
