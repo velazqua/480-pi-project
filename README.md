@@ -13,17 +13,22 @@ Public API function calls:
     - Analyzes audio (in real time) for that many seconds, for that
   many intervals.
 
+Both functions return a valid JSON string with the following attributes:
+minAmplitude, maxAmplitude, meanAmplitude, rmsAmplitude, db, rFrequency, meanNorm, maxDelta, minDelta, meanDelta, rmsDelta, and midlineAmplitude.
+
+Interpretation of attributes is left to the client.
+
 How to Run it
 ===============
 Run the following on your command line:
   - git clone https://github.com/velazqua/480-pi-project.git
 
-Change name of 480-pi-project directory to pirmi:
-  - mv 480-pi-project pirmi
-
-Compile all java files:
-  - javac -cp "./pirmi/java-json.jar" pirmi/*.java
+Compile all java files: (works in Unix)
+  - javac -cp ".:./java-json.jar" *.java
 
 Run sample client program:
-  - ./start_client.sh 137.207.74.151 (Unix)
-  - ./start_client.bat 137.207.74.151 (Windows)
+  - ./start_client.sh (Unix) (Tested on Ubuntu. Works)
+  - ./start_client.bat (Windows) (Untested)
+
+Note: IP is hardcoded into the sampleClient program. Our IP is 137.207.74.151 with port number 2024. 
+Our Pi is connected to the CS-WL-2 network.
