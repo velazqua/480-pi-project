@@ -1,1 +1,1 @@
-java -Djava.security.policy="./pirmi/Policy" pirmi.PiSampleClient %1
+java -cp ".;./java-json.jar" -Djava.security.policy="./Policy" PiSampleClient
