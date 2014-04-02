@@ -26,3 +26,4 @@ Run sample client program:
   - ./start_client.bat (Windows) (Untested)
 
 Note: IP is hardcoded into the sampleClient program. Our IP is 137.207.74.151 with port number 2024. 
+Our Pi is connected to the CS-WL-2 network.
