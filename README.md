@@ -22,5 +22,7 @@ Compile all java files: (works in Unix)
   - javac -cp ".:./java-json.jar" *.java
 
 Run sample client program:
-  - ./start_client.sh 137.207.74.151 (Unix)
-  - ./start_client.bat 137.207.74.151 (Windows)
+  - ./start_client.sh (Unix)
+  - ./start_client.bat (Windows)
+
+Note: IP is hardcoded into the sampleClient program. Our IP is 137.207.74.151 with port number 2024. 
