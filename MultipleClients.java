@@ -23,18 +23,21 @@ public class MultipleClients
             robot = (RaspiRobotInterface) Naming.lookup("rmi://" + robotIP + "/RaspiRobot");
             audioClient = (PiInfo) Naming.lookup("rmi://"+serverIPAudio1+"/PiInfoServer");
 
-            for (int k = 0; k < 1 /* 10 */; k++) {
+            for (int k = 0; k < 10; k++) {
               // Start recording on audio server 1
               String outputAudio1 = audioClient.getNoise(3);
 
               JSONObject json1 = new JSONObject(outputAudio1);
 
-              Double amp1 = new Double(json1.get("rFrequency").toString());
-              System.out.println("At step " + k + " the frequency is " + amp1);
-              if (amp1 > 100) {
+              Double amp1 = new Double(json1.get("maxAmplitude").toString());
+              System.out.println("At step " + k + " the max amplitude is " + amp1);
+              Double threshold = new Double(0.3);
+              if (amp1 > threshold) {
+                System.out.println("Sound levels are high. Moving robot forwards");
                 robot.moveForward();
               }
               else {
+                System.out.println("Sound levels are low. Moving robot backwards");
                 robot.moveReverse();
               }
 
