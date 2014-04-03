@@ -54,7 +54,7 @@ public class MultipleClients
         }
         else
         {
-            System.err.println("Usage: java -Djava.security.policy=\"./pirmi/Policy\" pirmi.PiInfoClient server name (or server IP)");
+            System.err.println("Usage: java -Djava.security.policy=\"./Policy\" PiSampleClient");
         }
     }
 }
