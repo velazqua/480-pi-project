@@ -20,31 +20,31 @@ Interpretation of attributes is left to the client.
 
 Description of files:
 ======================
-MultipleClients.java: contains implementation using both microphone and robot APIs.
+__MultipleClients.java:__ contains implementation using both microphone and robot APIs.
 
-PiInfo.java: Our public API interface
+__PiInfo.java:__ Our public API interface
 
-PiInfoServer.java: responsible for creating and running server process.
+__PiInfoServer.java:__ responsible for creating and running server process.
 
-PiInfoService.java: contains implementations of our APIs.
+__PiInfoService.java:__ contains implementations of our APIs.
 
-PiSampleClient.java: small sample client program using our API.
+__PiSampleClient.java:__ small sample client program using our API.
 
-Policy: RMI policy.
+__Policy:__ RMI policy.
 
-RaspiRobotInterface.java: robots public API.
+__RaspiRobotInterface.java:__ robots public API.
 
-SoundReporter.java: class responsible for recording audio and parsing it.
+__SoundReporter.java:__ class responsible for recording audio and parsing it.
 
-java-json.jar	json: Java JSON library. Optional.
+__java-json.jar:__ Java JSON library. Optional.
 
-start_client.bat: sample program script used to run client on Windows.
+__start_client.bat:__ sample program script used to run client on Windows.
 
-start_client.sh: sample program script used to run client on Unix machines.
+__start_client.sh:__ sample program script used to run client on Unix machines.
 
-start_mult_clients.sh: sample program script for mic + robot.
+__start_mult_clients.sh:__ sample program script for mic + robot.
 
-start_server.sh: script to create server process.
+__start_server.sh:__ script to create server process.
 
 
 How to Run it
