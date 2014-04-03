@@ -61,8 +61,7 @@ public class PiInfoService extends UnicastRemoteObject implements PiInfo
 
       // Clean up
       try {
-        //Process p = Runtime.getRuntime().exec("rm -f recording.mp3");
-        Process p = Runtime.getRuntime().exec("echo hello");
+        Process p = Runtime.getRuntime().exec("rm -f recording.mp3");
       }
       catch (IOException e) {
         System.out.println("Problem deleting");
